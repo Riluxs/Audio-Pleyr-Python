@@ -26,7 +26,6 @@ class MP3Player:
         self.setup_ui()
         
     def setup_ui(self):
-        # Заголовок
         title_label = tk.Label(
             self.root, 
             text="Rilux-S Audio Pleyr", 
@@ -36,7 +35,7 @@ class MP3Player:
         )
         title_label.pack(pady=20)
         
-        # Название файла
+        
         self.file_label = tk.Label(
             self.root,
             text="Файл не выбран",
@@ -48,11 +47,11 @@ class MP3Player:
         )
         self.file_label.pack(pady=10, padx=20, fill='x')
         
-        # Фрейм для кнопок
+        
         button_frame = tk.Frame(self.root, bg='#2c3e50')
         button_frame.pack(pady=20)
         
-        # Кнопка выбора файла
+        
         self.select_btn = tk.Button(
             button_frame,
             text="📁 Выбрать MP3",
@@ -81,7 +80,7 @@ class MP3Player:
         )
         self.play_btn.grid(row=0, column=1, padx=10)
         
-        # Кнопка остановки
+        
         self.stop_btn = tk.Button(
             button_frame,
             text="⏹️ Стоп",
@@ -96,7 +95,7 @@ class MP3Player:
         )
         self.stop_btn.grid(row=1, column=0, columnspan=2, pady=10)
         
-        # Статус
+        
         self.status_label = tk.Label(
             self.root,
             text="Статус: Ожидание",
@@ -106,7 +105,7 @@ class MP3Player:
         )
         self.status_label.pack(pady=10)
         
-        # Инструкция
+    
         info_text = "Rilux-S 2026"
         info_label = tk.Label(
             self.root,
@@ -145,10 +144,10 @@ class MP3Player:
             messagebox.showinfo("Инфо", "Уже играет!")
             return
         
-        # Остановить предыдущее воспроизведение
+    
         self.stop()
         
-        # Попробовать разные плееры
+        
         players = [
             ['ffplay', '-nodisp', '-autoexit', self.current_file],
             ['mpg123', self.current_file],
@@ -184,8 +183,8 @@ class MP3Player:
         self.play_btn.config(state='disabled')
         self.stop_btn.config(state='normal')
         self.status_label.config(text="Статус: ▶️ Воспроизведение...")
+
         
-        # Мониторинг окончания
         threading.Thread(target=self.monitor_playback, daemon=True).start()
     
     def monitor_playback(self):
