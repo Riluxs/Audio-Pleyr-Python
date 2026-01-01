@@ -1,2 +1,2 @@
-# Audio-Pleyr-Python
-Audio Pleyr "Rilux-S 2026"
+# Audio-Player-Python
+Audio Player "Rilux-S 2026"
